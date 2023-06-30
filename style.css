@@ -1,0 +1,10 @@
+h1{
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(176, 238, 4);
+}
+
+body{
+    background-color: black;
+}
