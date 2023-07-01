@@ -40,33 +40,39 @@ function displayMovieDetails(movie) {
   const availableTickets = availability - ticketsPurchased;
   let ticketUpdate;
 
-  document.querySelector("#availableTickets").textContent = ticketUpdate;
-  document.querySelector("#description").textContent = movie.description;
-
-  const ticketButton = document.querySelector("#buyTickets");
-
-  ticketButton.addEventListener("click", () => {
-    const buyticket = `${ticketUpdate--} `;
-
-    console.log(buyticket);
-  });
-
-  let newButton = document.querySelector("#status");
-
   if (availableTickets > 0) {
-    newButton.textContent = "OBTAINABLE";
-  } else {
-    newButton.textContent = "SOLD OUT";
-  }
+    document.querySelector("#availableTickets").textContent = ticketUpdate;
+    document.querySelector("#description").textContent = movie.description;
 
-  if (availableTickets === 0) {
-    ticketButton.disabled = true;
-  } else {
-    ticketButton.disabled = false;
-    ticketButton.textContent = "Purchase Ticket";
+    const ticketButton = document.querySelector("#buyTickets");
+
+    ticketButton.addEventListener("click", (e) => {
+   
+     const  spider = e.target
+
+      const buyticket = `${ticketUpdate--}`;
+
+      console.log(buyticket);
+
+      if (availableTickets === 0) {
+        spider.disabled = true;
+      } else {
+        spider.disabled = false;
+       spider.textContent = "Purchase Ticket";
+      }
+    });
+
+    let newButton = document.querySelector("#status");
+
+    
+
+    if (availableTickets > 0) {
+      newButton.textContent = "OBTAINABLE";
+    } else {
+      newButton.textContent = "SOLD OUT";
+    }
   }
 }
-
 // Initializing the code
 function init() {
   flatironTheater();
