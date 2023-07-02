@@ -34,38 +34,57 @@ function displayMovieDetails(movie) {
 
   document.querySelector("#title").textContent = movie.title;   // including content from html "title" to js
 
-  document.querySelector( "#runtime" ).textContent = `Runtime: ${movie.runtime} min`;  // concatinating constant text to movie
+  document.querySelector( "#runtime" ).textContent = `Runtime: ${movie.runtime} min`;  // shows how long the movie is
 
-  document.querySelector( "#showtime" ).textContent = `Showtime: ${movie.showtime}`; 
+  document.querySelector( "#showtime" ).textContent = `Showtime: ${movie.showtime}`;  // display  the time the movie is starting
 
-   document.querySelector("#description").textContent = movie.description;
+   document.querySelector("#description").textContent = movie.description; // a preview of what to expect from the movie
 
+ 
+    // display tickets available
 
   const availability = movie.capacity;
-  const ticketsPurchased = movie.tickets_sold;
+
+  const ticketsPurchased = movie.tickets_sold; 
+
   const availableTickets = availability - ticketsPurchased;
+
+ // display tickets available
+
   let ticketUpdate = availableTickets
 
   if (availableTickets > 0) {
+
     document.querySelector("#availableTickets").textContent = ticketUpdate;
+
+
+    // adding eventlistener to the ticket
    
     const ticketButton = document.querySelector("#buyTickets");
 
     ticketButton.addEventListener("click", (e) => {
    
-     const  spider = e.target
+     const  change = e.target     // represents the actual button clicked, if the tickets are sold out.
 
-      const buyticket = `${ticketUpdate--}`;
+      const buyticket = `${ticketUpdate--}`; // once a ticket is bought it deducts that one ticket bought
 
       console.log(buyticket);
 
       if (availableTickets === 0) {
-        spider.disabled = true;
+
+        change.disable = true;
+
       } else {
-        spider.disabled = false;
-       spider.textContent = "Purchase Ticket";
+
+        change.disable = false;
+
+       change.textContent = "Purchase Ticket";   // if there tickect are available purchase
+
       }
     });
+
+
+    // displays if tickects are sold out or not 
 
     let newButton = document.querySelector("#status");
 
@@ -73,16 +92,22 @@ function displayMovieDetails(movie) {
 
     if (availableTickets > 0) {
       newButton.textContent = "OBTAINABLE";
+
     } else {
+
       newButton.textContent = "SOLD OUT";
     }
+
   } 
 
+} 
 
-}
-// Initializing the code
+// Initialize and callback 
+
 function init() {
+
   flatironTheater();
+
 }
 
 document.addEventListener("DOMContentLoaded", init);
