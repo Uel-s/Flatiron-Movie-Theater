@@ -22,7 +22,7 @@ Flatiron Movie Theater is a web application that allows users to view a list of 
 
 1. git clone the repository to your local machine using the command
 
-2. $ "git clone" http://localhost:3000/films
+2. $ "git clone" https://github.com/Uel-s/Flatiron-Movie-Theater
 
 3. Head over to the project using the command cd
 
