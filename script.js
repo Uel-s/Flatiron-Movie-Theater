@@ -30,10 +30,16 @@ function flatironTheater() {
 
 // Display movies' information when clicked
 function displayMovieDetails(movie) {
-  document.querySelector("#poster").src = movie.poster;
-  document.querySelector("#title").textContent = movie.title;
-  document.querySelector( "#runtime" ).textContent = `Runtime: ${movie.runtime} min`;
-  document.querySelector( "#showtime" ).textContent = `Showtime: ${movie.showtime}`;
+  document.querySelector("#poster").src = movie.poster;  // under the img tag in html
+
+  document.querySelector("#title").textContent = movie.title;   // including content from html "title" to js
+
+  document.querySelector( "#runtime" ).textContent = `Runtime: ${movie.runtime} min`;  // concatinating constant text to movie
+
+  document.querySelector( "#showtime" ).textContent = `Showtime: ${movie.showtime}`; 
+
+   document.querySelector("#description").textContent = movie.description;
+
 
   const availability = movie.capacity;
   const ticketsPurchased = movie.tickets_sold;
@@ -42,8 +48,7 @@ function displayMovieDetails(movie) {
 
   if (availableTickets > 0) {
     document.querySelector("#availableTickets").textContent = ticketUpdate;
-    document.querySelector("#description").textContent = movie.description;
-
+   
     const ticketButton = document.querySelector("#buyTickets");
 
     ticketButton.addEventListener("click", (e) => {
