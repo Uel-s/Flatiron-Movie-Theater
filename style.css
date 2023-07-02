@@ -1,10 +1,99 @@
-h1{
+ h1{
     text-align: center;
     font-weight: bold;
     font-style: italic;
-    color: rgb(176, 238, 4);
+    color: black
 }
 
-body{
-    background-color: whitesmoke
+body{ 
+    margin: 0%;
+    padding: 0%;
+    background-color:yellow
 }
+
+img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+ 
+  
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+
+  main {
+    margin-top: 30px;
+  }
+
+  .moviesitems {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .moviesitems img {
+    max-width: 150px;
+    margin-right: 20px;
+    border-radius: 5px;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #777;
+    margin-bottom: 5px;
+  }
+  
+  button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+    
+    img {
+      max-width: 100%;
+    }
+    
+    .moviesitems {
+      flex-direction: column;
+    }
+    
+    .moviesitems img {
+      margin: 0 auto 10px;
+    }
+  }
