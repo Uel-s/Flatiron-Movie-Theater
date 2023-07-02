@@ -7,18 +7,22 @@ function flatironTheater() {
       const flatmovies = document.getElementById("films");
 
       movies.forEach((movie) => {
-        const list = document.createElement("li");
-        flatmovies.appendChild(list);
+
+        const list = document.createElement("li") // creating element list for movie titles 
+
+        flatmovies.appendChild(list); // adding list to our json infomation
 
         const anchor = document.createElement("a");
-        anchor.href = " http://localhost:3000/films";
+        anchor.href = " http://localhost:3000/films";   // linking all information from json
         list.appendChild(anchor);
 
-        anchor.textContent = `${movie.title}, ${movie.id}`;
+        anchor.textContent = `${movie.title}, ${movie.id}`; // link arranges the movies in order as per the json
 
-        anchor.addEventListener("click", (e) => {
-          e.preventDefault();
-          displayMovieDetails(movie);
+        anchor.addEventListener("click", (e) => {  // enabling clicking function when a movie title is selected
+
+         e.preventDefault();                     // prevent ending up in json window
+
+           displayMovieDetails(movie);      // displays  the remaining content from json 
         });
       });
     });
@@ -28,17 +32,13 @@ function flatironTheater() {
 function displayMovieDetails(movie) {
   document.querySelector("#poster").src = movie.poster;
   document.querySelector("#title").textContent = movie.title;
-  document.querySelector(
-    "#runtime"
-  ).textContent = `Runtime: ${movie.runtime} min`;
-  document.querySelector(
-    "#showtime"
-  ).textContent = `Showtime: ${movie.showtime}`;
+  document.querySelector( "#runtime" ).textContent = `Runtime: ${movie.runtime} min`;
+  document.querySelector( "#showtime" ).textContent = `Showtime: ${movie.showtime}`;
 
   const availability = movie.capacity;
   const ticketsPurchased = movie.tickets_sold;
   const availableTickets = availability - ticketsPurchased;
-  let ticketUpdate;
+  let ticketUpdate = availableTickets
 
   if (availableTickets > 0) {
     document.querySelector("#availableTickets").textContent = ticketUpdate;
@@ -71,7 +71,9 @@ function displayMovieDetails(movie) {
     } else {
       newButton.textContent = "SOLD OUT";
     }
-  }
+  } 
+
+
 }
 // Initializing the code
 function init() {
