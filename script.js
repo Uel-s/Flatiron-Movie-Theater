@@ -1,4 +1,4 @@
-//Creating a function for our code
+// Creating a function for our code
 function flatironTheater() {
   // Created a fetch to get our info from JSON
   fetch("http://localhost:3000/films")
@@ -7,22 +7,21 @@ function flatironTheater() {
       const flatmovies = document.getElementById("films");
 
       movies.forEach((movie) => {
+        const list = document.createElement("li"); // creating element list for movie titles
 
-        const list = document.createElement("li") // creating element list for movie titles 
-
-        flatmovies.appendChild(list); // adding list to our json infomation
+        flatmovies.appendChild(list); // adding list to our json information
 
         const anchor = document.createElement("a");
-        anchor.href = " http://localhost:3000/films";   // linking all information from json
+        anchor.href = " http://localhost:3000/films"; // linking all information from JSON
         list.appendChild(anchor);
 
-        anchor.textContent = `${movie.title}, ${movie.id}`; // link arranges the movies in order as per the json
+        anchor.textContent = `${movie.title}, ${movie.id}`; // link arranges the movies in order as per the JSON
 
-        anchor.addEventListener("click", (e) => {  // enabling clicking function when a movie title is selected
+        anchor.addEventListener("click", (e) => {
+          // enabling clicking function when a movie title is selected
+          e.preventDefault(); // prevent ending up in JSON window
 
-         e.preventDefault();                     // prevent ending up in json window
-
-           displayMovieDetails(movie);      // displays  the remaining content from json 
+          displayMovieDetails(movie); // displays the remaining content from JSON
         });
       });
     });
@@ -30,93 +29,54 @@ function flatironTheater() {
 
 // Display movies' information when clicked
 function displayMovieDetails(movie) {
-  document.querySelector("#poster").src = movie.poster;  // under the img tag in html
+  document.querySelector("#poster").src = movie.poster; // under the img tag in HTML
 
-  document.querySelector("#title").textContent = movie.title;   // including content from html "title" to js
+  document.querySelector("#title").textContent = movie.title; // including content from HTML "title" to JS
 
-  document.querySelector( "#runtime" ).textContent = `Runtime: ${movie.runtime} min`;  // shows how long the movie is
+  document.querySelector("#runtime").textContent = `Runtime: ${movie.runtime} min`; // shows how long the movie is
 
-  document.querySelector( "#showtime" ).textContent = `Showtime: ${movie.showtime}`;  // display  the time the movie is starting
+  document.querySelector("#showtime").textContent = `Showtime: ${movie.showtime}`; // display the time the movie is starting
 
-   document.querySelector("#description").textContent = movie.description; // a preview of what to expect from the movie
+  document.querySelector("#description").textContent = movie.description; // a preview of what to expect from the movie
 
- 
-    // display tickets available
-
+  // Display tickets availability
   const availability = movie.capacity;
-
-  const ticketsPurchased = movie.tickets_sold; 
-
+  const ticketsPurchased = movie.tickets_sold;
   let availableTickets = availability - ticketsPurchased;
-  console.log("=================",availableTickets)   // the remainder value
 
- // display tickets available
-
-  let ticketUpdate = availableTickets
+  // Update available tickets display
+  const availableTicketsElement = document.querySelector("#availableTickets");
+  const ticketButton = document.querySelector("#buyTickets");
 
   if (availableTickets > 0) {
+    availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
+    ticketButton.textContent = "Buy Tickets";
+    ticketButton.disabled = false;
+  } else {
+    availableTicketsElement.textContent = "Sold Out";
+    ticketButton.textContent = "Sold Out";
+    ticketButton.disabled = true;
+  }
 
-    document.querySelector("#availableTickets").textContent = "Available Tickets";
+  // Buy tickets button event listener
+  ticketButton.addEventListener("click", (e) => {
+    e.preventDefault();
 
+    if (availableTickets > 0) {
+      availableTickets--;
+      availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
 
-    // adding eventlistener to the ticket
-   
-    const ticketButton = document.querySelector("#buyTickets");
-
-    ticketButton.addEventListener("click", (e) => {
-   
-     let  change = e.target     // represents the actual button clicked, if the tickets are sold out.
-      
-     let remain = `${availableTickets--}`
-
-      console.log("REamion", remain)
-
-      const buyticket = `${ticketUpdate--}`; // once a ticket is bought it deducts that one ticket bought
-
-      console.log(buyticket); 
-
-      if (availableTickets >= -1) {
-
-        document.querySelector("#availableTickets").textContent = remain;
-    
-      }
       if (availableTickets === 0) {
-
-        change.disable = true;
-      //  change.textContent = "SOLD OUT";
-
+        ticketButton.textContent = "Sold Out";
+        ticketButton.disabled = true;
       }
-    });
-
-
-    // displays if tickects are sold out or not 
-
-    let newButton = document.querySelector("#status");
-
-
-    // display sold out when tickets = 0
-    
-
-    if (remain === 0) {
-
-
-     // newButton.textContent = "SOLd OUT";
-
-    } else {
-
-      newButton.textContent = "OBTAINABLE";
     }
+  });
+}
 
-  } 
-
-} 
-
-// Initialize and callback 
-
+// Initialize and callback
 function init() {
-
   flatironTheater();
-
 }
 
 document.addEventListener("DOMContentLoaded", init);
