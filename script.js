@@ -48,7 +48,6 @@ function displayMovieDetails(movie) {
   const ticketsPurchased = movie.tickets_sold; 
 
   let availableTickets = availability - ticketsPurchased;
-  
   console.log("=================",availableTickets)   // the remainder value
 
  // display tickets available
@@ -57,7 +56,7 @@ function displayMovieDetails(movie) {
 
   if (availableTickets > 0) {
 
-    document.querySelector("#availableTickets").textContent = availableTickets;
+    document.querySelector("#availableTickets").textContent = "Available Tickets";
 
 
     // adding eventlistener to the ticket
@@ -70,6 +69,12 @@ function displayMovieDetails(movie) {
       
      let remain = `${availableTickets--}`
 
+      console.log("REamion", remain)
+
+      const buyticket = `${ticketUpdate--}`; // once a ticket is bought it deducts that one ticket bought
+
+      console.log(buyticket); 
+
       if (availableTickets >= -1) {
 
         document.querySelector("#availableTickets").textContent = remain;
@@ -78,17 +83,30 @@ function displayMovieDetails(movie) {
       if (availableTickets === 0) {
 
         change.disable = true;
-
-       change.textContent = "SOLD OUT";   // displays if tickects are sold out 
+      //  change.textContent = "SOLD OUT";
 
       }
-
     });
 
 
+    // displays if tickects are sold out or not 
+
+    let newButton = document.querySelector("#status");
+
+
+    // display sold out when tickets = 0
     
-  
-    
+
+    if (remain === 0) {
+
+
+     // newButton.textContent = "SOLd OUT";
+
+    } else {
+
+      newButton.textContent = "OBTAINABLE";
+    }
+
   } 
 
 } 
