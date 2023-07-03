@@ -22,21 +22,21 @@ Flatiron Movie Theater is a web application that allows users to view a list of 
 
 1. git clone the repository to your local machine using the command
 
-2. $ "git clone" https://github.com/Uel-s/Flatiron-Movie-Theater
+>[ $ "git clone"] (https://github.com/Uel-s/Flatiron-Movie-Theater)
 
-3. Head over to the project using the command cd
+2. Head over to the project using the command cd
 
-4. $ "cd Flatiron-movie-theatre
+ >$ "cd Flatiron-movie-theatre
 
-5. Run the code using command code,on your terminal
+3. Run the code using command code,on your terminal
 
-$ code.
+ >$ code.
 
-6. In code's terminal run
+4. In code's terminal run
 
-  $ json-server --watch db.json
+  >$ json-server --watch db.json
 
-7.  Open the `index.html` file in a web browser.  
+5.  Open the `index.html` file in a web browser.  
 
  The application fetches movie data from a JSON file hosted at `http://localhost:3000/films`. Make sure to run a local server that serves the JSON file at this endpoint. If you're using Node.js, you can set up a simple server using the `http-server` 
 
