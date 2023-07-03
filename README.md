@@ -38,9 +38,9 @@ Flatiron Movie Theater is a web application that allows users to view a list of 
 
 5.  Open the `index.html` file in a web browser.  
 
- The application fetches movie data from a JSON file hosted at `http://localhost:3000/films`. Make sure to run a local server that serves the JSON file at this endpoint. If you're using Node.js, you can set up a simple server using the `http-server` 
+ The application fetches movie data from a JSON file hosted at (http://localhost:3000/films). Make sure to run a local server that serves the JSON file at this endpoint. If you're using Node.js, you can set up a simple server using the `http-server` 
 
-Once the local server is running, you can access the Flatiron Movie Theater application at `http://localhost:3000` or the appropriate URL provided by the local server.
+Once the local server is running, you can access the Flatiron Movie Theater application at (http://localhost:3000) or the appropriate URL provided by the local server.
 
 ## Author
 
