@@ -49,7 +49,7 @@ function displayMovieDetails(movie) {
   const ticketButton = document.querySelector("#buyTickets");
 
   if (availableTickets > 0) {
-    availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
+    availableTicketsElement.textContent = `Obtainable Tickets: ${availableTickets}`;
     ticketButton.textContent = "Buy Tickets";
     ticketButton.disabled = false;
   } else {
@@ -64,7 +64,7 @@ function displayMovieDetails(movie) {
 
     if (availableTickets > 0) {
       availableTickets--;
-      availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
+      availableTicketsElement.textContent = `Obtainable Tickets: ${availableTickets}`;
 
       if (availableTickets === 0) {
         ticketButton.textContent = "Sold Out";
