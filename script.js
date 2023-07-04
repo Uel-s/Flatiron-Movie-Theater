@@ -4,10 +4,12 @@ function flatironTheater() {
   fetch("http://localhost:3000/films")
     .then((res) => res.json())
     .then((movies) => {
+
       const flatmovies = document.getElementById("films");
 
       movies.forEach((movie) => {
-        const list = document.createElement("li"); // creating element list for movie titles
+
+        const list = document.createElement("li"); // creating element list for movie info
 
         flatmovies.appendChild(list); // adding list to our json information
 
@@ -19,9 +21,11 @@ function flatironTheater() {
 
         anchor.addEventListener("click", (e) => {
           // enabling clicking function when a movie title is selected
+
           e.preventDefault(); // prevent ending up in JSON window
 
           displayMovieDetails(movie); // displays the remaining content from JSON
+
         });
       });
     });
@@ -53,8 +57,8 @@ function displayMovieDetails(movie) {
     ticketButton.textContent = "Buy Tickets";
     ticketButton.disabled = false;
   } else {
-    availableTicketsElement.textContent = "Sold Out";
-    ticketButton.textContent = "Sold Out";
+    availableTicketsElement.textContent = "SOLD OUT";
+    ticketButton.textContent = "SOLD OUT";
     ticketButton.disabled = true;
   }
 
@@ -67,7 +71,7 @@ function displayMovieDetails(movie) {
       availableTicketsElement.textContent = `Obtainable Tickets: ${availableTickets}`;
 
       if (availableTickets === 0) {
-        ticketButton.textContent = "Sold Out";
+        ticketButton.textContent = "SOLD OUT";
         ticketButton.disabled = true;
       }
     }
